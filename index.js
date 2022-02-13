@@ -119,37 +119,37 @@ app.get('/algorithms/:id1/:id2', async (req, res) => {
 // Learn
 app.get('/learn', (req, res) => {
     // res.render('learn/learnHome');
-    res.render('learn/learnHome');
+    res.render('learnHome');
 })
 
 app.get('/learn/:id', (req, res) => {
     const {id} = req.params;
-    res.render('learn/cubeIntro', {id});
+    res.render('cubeIntro', {id});
 })
 
 app.get('/learn/:id1/:id2', (req, res) => {
     const {id1, id2} = req.params;
         switch(id1) {
             case '2x2x2':
-                res.render('learn/twoCube', {id2});
+                res.render('twoCube', {id2});
                 break;
             case '3x3x3':
-                res.render('learn/threeCube', {id2});
+                res.render('threeCube', {id2});
                 break;
             case '4x4x4':
-                res.render('learn/fourCube', {id2});
+                res.render('fourCube', {id2});
                 break;
             case '5x5x5':
-                res.render('learn/fiveCube', {id2});
+                res.render('fiveCube', {id2});
                 break;
             case '6x6x6':
-                res.render('learn/sixCube', {id2});
+                res.render('sixCube', {id2});
                 break;
             case '7x7x7':
-                res.render('learn/sevenCube', {id2});
+                res.render('sevenCube', {id2});
                 break;
             default:
-                res.render('learn/cubeIntro', {id: id1});
+                res.render('cubeIntro', {id: id1});
         }
     
 })
