@@ -119,7 +119,7 @@ app.get('/algorithms/:id1/:id2', async (req, res) => {
 // Learn
 app.get('/learn', (req, res) => {
     // res.render('learn/learnHome');
-    res.send('learnHome')
+    res.render('learnHome');
 })
 
 app.get('/learn/:id', (req, res) => {
