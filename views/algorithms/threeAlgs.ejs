@@ -1,0 +1,51 @@
+<% layout('layouts/boilerplate') %> 
+
+<%= console.log(algorithms["3x3x3"][id2]) %>
+<%= console.log([ id2]) %> 
+
+<!-- Logic -->
+<% 
+ let data;
+ switch(id2) {
+     case 'oll':
+         data = algorithms["3x3x3"][id2];
+         break;
+    case 'pll':
+        data = algorithms["3x3x3"][id2];
+        break;
+ }
+ %> 
+
+
+
+<!-- Display -->
+<section class="p-3 " id='learnPage' data-aos="fade-up" data-aos-delay="100">
+    <div class="container mx-auto">
+      <div class="row">
+  
+        <% for(let i in data) { %>
+          
+            
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                  <div class="col-md">
+                    <div class="card text-center shadow">
+                        <img src=<%= `/imgs/${data[i][0].slice(20)}`%>   class="img card-img-top" alt="image">
+                        <div class="card-body">
+                          <h6 class="card-title text-center"><%= data[i][1] %> </h6>
+                          <h6 class="card-title text-center"><%= data[i][2] %> </h6>
+                          <!-- <a  class="btn btn-dark shadow sm" href='#'>Learn</a> -->
+                        </div>
+                    </div>
+                </div>
+                </div>
+            
+            
+              
+    
+    <% } %> 
+  
+        
+      </div>
+    </div>
+  </section>
+  

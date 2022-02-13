@@ -1,0 +1,89 @@
+<% layout('layouts/boilerplate') %>
+
+<!-- Data -->
+<% 
+    const beg = [{name: "Beginner's Method", src: "https://www.youtube.com/embed/7Ron6MN45LY", title: 'YouTube video player' }, 
+    {name: 'Example Solves', src: "https://www.youtube.com/embed/DepFQpJ5KqU", title: 'YouTube video player'},
+    {name: 'Optimizing Beginner\'s Method', src: "https://www.youtube.com/embed/vmeleO65BHc", title: 'YouTube video player'}
+];
+
+    const cfop = [
+        {name: 'CFOP', src: "https://www.youtube.com/embed/MS5jByTX_pk", title: 'YouTube video player'}, 
+        {name: 'F2L', src: "https://www.youtube.com/embed/Ar_Zit1VLG0", title: 'YouTube video player'},
+        {name: '2 Look OLL', src: "https://www.youtube.com/embed/GhmYBgLoQQg", title: 'YouTube video player'},
+        {name: '2 Look PLL', src: "https://www.youtube.com/embed/f_Yor-ydZjs", title: 'YouTube video player'},
+        {name: 'Advanced Cross', src: "https://www.youtube.com/embed/x93VB_v5ATM", title: 'YouTube video player'},
+        {name: 'One Look OLL', src: "https://www.youtube.com/embed/vU6HsK3hvQs", title: 'YouTube video player'},
+        {name: 'One Look PLL', src: "https://www.youtube.com/embed/9r_HqG4zSbk", title: 'YouTube video player'}
+
+    ];
+
+    const roux = [
+        {name: 'Roux', src: "https://www.youtube.com/embed/ImBWkk-7teA", title: 'YouTube video player'},
+        {name: 'Advanced Roux', src: "https://www.youtube.com/embed/MBGnqDjSBPE", title: 'YouTube video player'}
+    ]
+
+    const zz = [
+        {name: 'ZZ', src: "https://www.youtube.com/embed/iNSUBnWaRxo", title: 'YouTube video player'}
+    ]
+
+    const petrus = [
+        {name: 'Petrus', src: "https://www.youtube.com/embed/z15KJs0svFs", title: 'YouTube video player'}
+    ]
+
+%>
+
+<!-- Logic (because id rcieved is a string and it was causing recursion in the UI) -->
+<% 
+    let data;
+    switch(id2) {
+        case 'beg':
+            data = beg;
+            break;
+        case 'cfop':
+            data = cfop;
+            break;
+        case 'roux':
+            data = roux;
+            break;
+        case 'zz':
+            data = zz;
+            break;
+        case 'petrus':
+            data = petrus;
+            break;
+    }
+%> 
+
+<!-- Display -->
+<section id="resources">
+<% for(let i of data){ %>
+    
+        <h1><%= i.name %> </h1>
+        <div class="box"><a href=""><iframe src=<%= i.src %>  title=<%= i.title %>  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></a></div>
+    
+<% } %>  
+<h6>Source <a href="https://www.youtube.com/channel/UCqTVfT9JQqhA6_Hi_h_h97Q">Jperm</a></h6>
+</section>
+
+<!-- External Js -->
+  <script>
+    const boxes = document.querySelectorAll(".box");
+    window.addEventListener("scroll", checkBoxes);
+
+checkBoxes();
+
+function checkBoxes() {
+const triggerBottom = (window.innerHeight / 5) * 4;
+
+boxes.forEach((box) => {
+  const boxTop = box.getBoundingClientRect().top;
+
+  if (boxTop < triggerBottom) {
+    box.classList.add("show");
+  } else {
+    box.classList.remove("show");
+  }
+});
+}
+</script>

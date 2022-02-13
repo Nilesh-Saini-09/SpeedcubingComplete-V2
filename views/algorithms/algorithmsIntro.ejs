@@ -1,0 +1,87 @@
+<% layout('layouts/boilerplate') %> 
+
+<!-- Data -->
+<% 
+const two = [
+    {name: 'LBL', img: '/imgs/2x2/img1.png', link: '/algorithms/2x2x2/lbl'},
+    {name: 'Ortega', img: '/imgs/2x2/img2.png', link: '/algorithms/2x2x2/ortega'},
+    {name: 'CLL', img: '/imgs/2x2/img3.png', link: '/algorithms/2x2x2/cll'},
+    {name: 'EG-1', img: '/imgs/2x2/img4.png', link: '/algorithms/2x2x2/eg1'},
+    {name: 'EG-2', img: '/imgs/2x2/img5.png', link: '/algorithms/2x2x2/eg2'}
+]; 
+
+const three = [
+    {name: 'OLL', img: '/imgs/3x3x3/img1.png', link: '/algorithms/3x3x3/oll'},
+    {name: 'PLL', img: '/imgs/3x3x3/img2.png', link: '/algorithms/3x3x3/pll'},
+    {name: 'F2L', img: '/imgs/3x3x3/img3.png', link: '/algorithms/3x3x3/f2l'},
+    {name: 'COLL', img: '/imgs/3x3x3/img4.png', link: '/algorithms/3x3x3/coll'},
+    {name: 'VLS', img: '/imgs/3x3x3/img5.png', link: '/algorithms/3x3x3/vls'},
+]; 
+
+const four = [
+    {name: '', img: '/imgs/4x4/img1.png', link: ''},
+    {name: '', img: '/imgs/4x4/img2.png', link: ''},
+    {name: '', img: '/imgs/more-res.png', link: ''}
+];
+
+const bigcubes = [
+    {name: '5x5x5', img: '/imgs/bigcubes/img1.png', link: ''},
+    {name: '6x6x6', img: '/imgs/bigcubes/img2.png', link: ''},
+    {name: '7x7x7', img: '/imgs/bigcubes/img3.png', link: ''},
+]; 
+
+
+%>
+
+<!-- Logic -->
+<% 
+ let data;
+ switch(id) {
+     case '2x2x2':
+         data = two;
+         break;
+    case '3x3x3':
+        data = three;
+        break;
+    case '4x4x4':
+        data = four;
+        break;
+    case '5x5x5':
+        data = five;
+        break;
+    case 'bigcubes':
+        data = bigcubes;
+        break;
+ }
+ %> 
+
+ <!-- Display -->
+<section class="p-3 " id='learnPage' data-aos="fade-up" data-aos-delay="100">
+    <div class="container mx-auto">
+      <div class="row">
+  
+        <% for(let i of data) { %>
+          
+            
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                  <div class="col-md">
+                    <div class="card text-center shadow">
+                        <img src=<%= i.img %>   class="card-img-top" alt="image">
+                        <div class="card-body">
+                          <h5 class="card-title text-center"><%= i.name %> </h5>
+                          <a  class="btn btn-dark shadow sm" href=<%= i.link %>>Learn</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            
+            
+              
+    
+    <% } %> 
+  
+        
+      </div>
+    </div>
+  </section>
+  

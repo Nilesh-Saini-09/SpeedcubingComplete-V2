@@ -1,0 +1,79 @@
+<% layout('layouts/boilerplate') %>
+
+<!-- Data -->
+<% 
+    const lbl = [{name: 'Layer By Layer', src: 'https://www.youtube.com/embed/GANnG5a19kg', title: 'YouTube video player' }, {name: 'Example Solves', src: 'https://www.youtube.com/embed/N_X9zADW4M0', title: 'YouTube video player'}];
+
+    const ortega = [
+        {name: 'Ortega Method', src: 'https://www.youtube.com/embed/z2gOUzMmY3w', title: 'YouTube video player'}, 
+        {name: 'How to get faster with ortega', src: 'https://www.youtube.com/embed/wR149NNk2Fw', title: 'YouTube video player'}
+    ];
+
+    const cll = [
+        {name: 'CLL', src: 'https://www.youtube.com/embed/GLuitFBY5N8', title: 'YouTube video player'}
+    ]
+
+    const eg1 = [
+        {name: 'EG-1', src: 'https://www.youtube.com/embed/30IF6qW3cNg', title: 'YouTube video player'}
+    ]
+
+    const eg2 = [
+        {name: 'EG-2', src: 'https://www.youtube.com/embed/FGffhaPiryE', title: 'YouTube video player'}
+    ]
+
+%>
+
+<!-- Logic (because id rcieved is a string and it was causing recursion in the UI) -->
+<% 
+    let data;
+    switch(id2) {
+        case 'lbl':
+            data = lbl;
+            break;
+        case 'ortega':
+            data = ortega;
+            break;
+        case 'cll':
+            data = cll;
+            break;
+        case 'eg1':
+            data = eg1;
+            break;
+        case 'eg2':
+            data = eg2;
+            break;
+    }
+%> 
+
+<!-- Display -->
+<section id="resources">
+<% for(let i of data){ %>
+    
+        <h1><%= i.name %> </h1>
+        <div class="box"><a href=""><iframe src=<%= i.src %>  title=<%= i.title %>  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></a></div>
+    
+<% } %>  
+<h6>Source <a href="https://www.youtube.com/channel/UCqTVfT9JQqhA6_Hi_h_h97Q">Jperm</a></h6>
+</section>
+
+<!-- External Js -->
+  <script>
+    const boxes = document.querySelectorAll(".box");
+    window.addEventListener("scroll", checkBoxes);
+
+checkBoxes();
+
+function checkBoxes() {
+const triggerBottom = (window.innerHeight / 5) * 4;
+
+boxes.forEach((box) => {
+  const boxTop = box.getBoundingClientRect().top;
+
+  if (boxTop < triggerBottom) {
+    box.classList.add("show");
+  } else {
+    box.classList.remove("show");
+  }
+});
+}
+</script>

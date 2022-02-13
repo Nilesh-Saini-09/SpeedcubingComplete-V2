@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const ejsMate = require('ejs-mate');
+const fetch  = require('node-fetch');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -16,8 +17,8 @@ app.get('/', (req, res) => {
 
 // Timer Home Page (cube, oll, pll, f2l)
 app.get('/timer', (req, res) => {
-    //res.render('timer');
-    res.send('Timer home Page')
+    res.render('timer');
+    //res.send('Timer home Page')
 })
 
 app.get('/timer/:id', (req, res) => {
@@ -64,63 +65,51 @@ app.get('/more', (req, res) => {
 
 // Algorithms
 app.get('/algorithms', (req, res) => {
-    //res.render('algorithms');
-    res.send('algorithms home page')
+    res.render('algorithms/algorithmsHome');
 })
 
 app.get('/algorithms/:id', (req, res) => {
     const {id} = req.params;
-    switch(id.toLocaleLowerCase()){
-        case '3x3':
-            res.send('3x3 algs') 
-            //res.render('ollTrainer')
-            break;
-        case '2x2':
-            res.send('2x2 algs') 
-            //res.render('pllTrainer')
-            break;
-        case '4x4':
-            res.send('4x4 algs') 
-            //res.render('f2lTrainer')
-            break;
-        case '5x5':
-            res.send('5x5 algs') 
-            //res.render('cubeTimer')
-            break;
-        // default: 
-        //     res.send('3x3 algs')
-            //res.render('cubeTimer)
-    }
+    res.render('algorithms/algorithmsIntro', {id});
 })
 
-app.get('/algorithms/:id1/:id2', (req, res) => {
-    const allPuzzles = ['2x2', '3x3', '4x4', '5x5', '6x6', '7x7'];
+app.get('/algorithms/:id1/:id2', async (req, res) => {
+    const allPuzzles = ['2x2x2', '3x3x3', '4x4x4', '5x5x5', '6x6x6', '7x7x7'];
     const {id1, id2} = req.params;
-    if(!allPuzzles.includes(id1.toLocaleLowerCase())){
+    
+    if(!allPuzzles.includes(id1.toLowerCase())){
         //res.render('error page')
         res.send('Error');
     }
 
-    switch(id2.toLocaleLowerCase()){
+    let algorithms;
+    await fetch('https://scc-algs-api.herokuapp.com/algs')
+        .then(response => response.json())
+        .then(data => algorithms = data)
+        .catch(err => console.log(err))
+
+
+    switch(id2.toLowerCase()){
         case 'oll':
-            res.send('oll') 
-            //res.render('')
+            res.render('algorithms/threeAlgs', {id2, algorithms})
             break;
+
         case 'pll':
-            res.send('pll') 
-            //res.render('pllTrainer')
+            res.render('algorithms/threeAlgs', {id2, algorithms})
             break;
+
         case 'f2l':
             res.send('') 
             //res.render('f2lTrainer')
             break;
+
         case '5x5':
             res.send('5x5 algs') 
             //res.render('cubeTimer')
             break;
-        // default: 
-        //     res.send('3x3 algs')
-            //res.render('cubeTimer)
+
+        default:
+            res.render('algorithms/algorithmsIntro', {id: id1});
     }
     
 
@@ -128,15 +117,118 @@ app.get('/algorithms/:id1/:id2', (req, res) => {
 })
 
 // Learn
-
 app.get('/learn', (req, res) => {
-    res.send('Learn Page')
-    // res.render('learn')
+    //res.send('Learn Page')
+     res.render('learn/learn');
 })
 
 app.get('/learn/:id', (req, res) => {
     const {id} = req.params;
+    res.render('learn/cubeIntro', {id});
+})
+
+app.get('/learn/:id1/:id2', (req, res) => {
+    const {id1, id2} = req.params;
+    // const puz = ['2x2x2', '3x3x3', '4x4x4', '5x5x5', '6x6x6', '7x7x7'];
+    
+        switch(id1) {
+            case '2x2x2':
+                res.render('learn/twoCube', {id2});
+                break;
+            case '3x3x3':
+                res.render('learn/threeCube', {id2});
+                break;
+            case '4x4x4':
+                res.render('learn/fourCube', {id2});
+                break;
+            case '5x5x5':
+                res.render('learn/fiveCube', {id2});
+                break;
+            case '6x6x6':
+                res.render('learn/sixCube', {id2});
+                break;
+            case '7x7x7':
+                res.render('learn/sevenCube', {id2});
+                break;
+            default:
+                res.render('learn/cubeIntro', {id: id1});
+        }
     
 })
 
+
 app.listen(port, () => console.log('All Ok'));
+
+
+// app.get('/learn/:id', (req, res) => {
+//     const {id} = req.params;
+//     res.render(`cubePages/${id}/${id}HomePage`);
+    
+// })
+
+// app.get('/learn/2x2x2/:id', (req, res) => {
+//     const {id} = req.params;
+//     switch(id) {
+//         case 'lbl':
+//             res.render(`cubePages/2x2x2/lbl`);
+//             break;
+//         case 'ortega':
+//             res.render(`cubePages/2x2x2/ortega`);
+//             break;
+//         case 'cll':
+//             res.render(`cubePages/2x2x2/cll`);
+//             break;
+//         case 'eg1':
+//             res.render(`cubePages/2x2x2/eg1`);
+//             break;
+//         case 'eg2':
+//             res.render(`cubePages/2x2x2/eg2`);
+//             break;
+//     }
+// })
+
+// app.get('/learn/:id1/:id2', (req, res) => {
+//     let {id1, id2} = req.params;
+//     let puzzles = ['2x2x2', '3x3x3', '4x4x4', '5x5x5', '6x6x6', '7x7x7'];
+//     let method = ['lbl', 'ortega', 'cll', 'eg1', 'eg2', 'beg', 'cfop', 'roux', 'zz', 'petrus', 'reduction', 'yau'];
+    
+//     if(puzzles.includes(id1) && method.includes(id2)) {
+//         if(id1 === '2x2x2') {
+//             switch(id2) {
+//                 case 'lbl':
+//                     res.render(`cubePages/${id1}/lbl`);
+//                     break;
+//                 case 'ortega':
+//                     res.render(`cubePages/${id1}/ortega`);
+//                     break;
+//                 case 'cll':
+//                     res.render(`cubePages/${id1}/cll`);
+//                     break;
+//                 case 'eg1':
+//                     res.render(`cubePages/${id1}/eg1`);
+//                     break;
+//                 case 'eg2':
+//                     res.render(`cubePages/${id1}/eg2`);
+//                     break;
+//             }
+//         } else if(id1 === '3x3x3') {
+//             switch(id2) {
+//                 case 'beg':
+//                     res.render(`cubePages/${id1}/beg`);
+//                     break;
+//                 case 'ortega':
+//                     res.render(`cubePages/${id1}/cfop`);
+//                     break;
+//                 case 'cll':
+//                     res.render(`cubePages/${id1}/roux`);
+//                     break;
+//                 case 'eg1':
+//                     res.render(`cubePages/${id1}/zz`);
+//                     break;
+//                 case 'eg2':
+//                     res.render(`cubePages/${id1}/petrus`);
+//                     break;
+//             }
+//         }
+//     }
+// })

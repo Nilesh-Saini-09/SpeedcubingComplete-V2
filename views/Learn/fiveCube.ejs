@@ -1,0 +1,65 @@
+<% layout('layouts/boilerplate') %>
+
+<!-- Data -->
+<% 
+    const reduction = [{name: "Reduction", src: "https://www.youtube.com/embed/d1I-jJlVwB4", title: 'YouTube video player' },
+    {name: "How To Get Faster", src: "https://www.youtube.com/embed/A9X4OHrqupw", title: 'YouTube video player' }
+];
+
+    const yau = [
+        {name: 'YAU', src: "https://www.youtube.com/embed/_h8d95DIjVA", title: 'YouTube video player'},
+        {name: 'Step 1', src: "https://www.youtube.com/embed/x5WsiPRcrJ4", title: 'YouTube video player'},
+        {name: 'Step 2', src: "https://www.youtube.com/embed/ceki9Tr7nCM", title: 'YouTube video player'},
+        {name: 'Step 3', src: "https://www.youtube.com/embed/Rj0exrXrG2w", title: 'YouTube video player'},
+        {name: 'Extra', src: "https://www.youtube.com/embed/oqGXdc5kCJM", title: 'YouTube video player'},
+        {name: 'Example Solves', src: "https://www.youtube.com/embed/F_k3OLUk9Ls", title: 'YouTube video player'}
+];
+
+
+%>
+
+<!-- Logic (because id rcieved is a string and it was causing recursion in the UI) -->
+<% 
+    let data;
+    switch(id2) {
+        case 'reduction':
+            data = reduction;
+            break;
+        case 'yau':
+            data = yau;
+            break;
+    }
+%> 
+
+<!-- Display -->
+<section id="resources">
+<% for(let i of data){ %>
+    
+        <h1><%= i.name %> </h1>
+        <div class="box"><a href=""><iframe src=<%= i.src %>  title=<%= i.title %>  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></a></div>
+    
+<% } %>  
+<h6>Source <a href="https://www.youtube.com/channel/UCqTVfT9JQqhA6_Hi_h_h97Q">Cube Skills</a></h6>
+</section>
+
+<!-- External Js -->
+  <script>
+    const boxes = document.querySelectorAll(".box");
+    window.addEventListener("scroll", checkBoxes);
+
+checkBoxes();
+
+function checkBoxes() {
+const triggerBottom = (window.innerHeight / 5) * 4;
+
+boxes.forEach((box) => {
+  const boxTop = box.getBoundingClientRect().top;
+
+  if (boxTop < triggerBottom) {
+    box.classList.add("show");
+  } else {
+    box.classList.remove("show");
+  }
+});
+}
+</script>
