@@ -118,7 +118,6 @@ app.get('/algorithms/:id1/:id2', async (req, res) => {
 
 // Learn
 app.get('/learn', (req, res) => {
-    //res.send('Learn Page')
      res.render('learn/learn');
 })
 
@@ -129,8 +128,6 @@ app.get('/learn/:id', (req, res) => {
 
 app.get('/learn/:id1/:id2', (req, res) => {
     const {id1, id2} = req.params;
-    // const puz = ['2x2x2', '3x3x3', '4x4x4', '5x5x5', '6x6x6', '7x7x7'];
-    
         switch(id1) {
             case '2x2x2':
                 res.render('learn/twoCube', {id2});
