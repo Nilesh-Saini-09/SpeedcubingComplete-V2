@@ -48,8 +48,7 @@ app.get('/timer/:id', (req, res) => {
 
 // Quiz
 app.get('/quiz', (req, res) => {
-    //res.render('quiz');
-    res.send('Quiz');
+    res.redirect('https://nilesh-saini-09.github.io/RubiksCube-Quiz/');
 })
 
 // Blogs
@@ -98,9 +97,32 @@ app.get('/algorithms/:id1/:id2', async (req, res) => {
             res.render('algorithms/threeAlgs', {id2, algorithms})
             break;
 
-        case 'f2l':
-            res.send('') 
-            //res.render('f2lTrainer')
+        case 'f2l': 
+            res.render('algorithms/threeAlgs', {id2, algorithms})
+            break;
+
+        case 'coll':
+            res.render('algorithms/threeAlgs', {id2, algorithms})
+            break;
+        
+        case 'ell':
+            res.render('algorithms/threeAlgs', {id2, algorithms})
+            break;
+        
+        case 'ortega':
+            res.render('algorithms/twoAlgs', {id2, algorithms})
+            break;
+        
+        case 'cll':
+            res.render('algorithms/twoAlgs', {id2, algorithms})
+            break;
+
+        case 'eg1':
+            res.render('algorithms/twoAlgs', {id2, algorithms})
+            break;
+        
+        case 'eg2':
+            res.render('algorithms/twoAlgs', {id2, algorithms})
             break;
 
         case '5x5':
@@ -120,6 +142,7 @@ app.get('/algorithms/:id1/:id2', async (req, res) => {
 app.get('/learn', (req, res) => {
     // res.render('learn/learnHome');
     res.render('learnHome');
+    
 })
 
 app.get('/learn/:id', (req, res) => {
@@ -152,6 +175,10 @@ app.get('/learn/:id1/:id2', (req, res) => {
                 res.render('cubeIntro', {id: id1});
         }
     
+})
+
+app.get('/underConst', (req, res) => {
+    res.render('underConst');
 })
 
 

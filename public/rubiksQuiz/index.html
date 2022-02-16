@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="quizStyle.css" />
+    <link rel="stylesheet" href="flipcard.css" />
+    
+  </head>
+  <body>
+    <div class="main-container">
+    <!-- Navbar -->
+    <nav id='navbar'>
+      <div class="nav-left">
+        <a href="./index.html"><h2 id="brand">Rubiks Quiz</h2></a>
+      </div>
+      <div class="nav-right">
+        <a href="../../Index.html"><i class="fas fa-home"></i></a>
+				<a href="#"><i class="fas fa-star"></i></a>
+				<a href="#"><i class="fas fa-info-circle"></i></a>
+      </div>
+    </nav>
+    <!-- Game area -->
+    <div class="container">
+      <div class="allcards">
+        <!--  card 1    -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span id="heading"
+                >Easy <br />
+                Quiz</span
+              >
+            </div>
+            <div class="flip-card-back">
+              <a href="./easyGame/easyGameHTML/easyQuiz.html">
+                <button id="btn" class="slideUpBtn btn"><span>Play</span></button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!--   crad 2   -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span id="heading"
+                >Moderate <br />
+                Quiz</span
+              >
+            </div>
+            <div class="flip-card-back">
+              <a href="./modGame/modGameHTML/modQuiz.html">
+                <button id="btn" class="slideUpBtn btn"><span>Play</span></button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!--   card 3   -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span id="heading">Instructions</span>
+            </div>
+            <div class="flip-card-back">
+              <span id="instructions">
+                <ul>
+                  <li>You have three modes to play.</li>
+                  <li>When you hover over the quiz it will flip.</li>
+                  <li>Click on the play button to start the quiz.</li>
+                </ul>
+              </span>
+            </div>
+          </div>
+        </div>
+        <!--  card 4    -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span id="heading"
+                >Advance <br />
+                Quiz</span
+              >
+            </div>
+            <div class="flip-card-back">
+              <button id="btn" class="slideUpBtn btn"><span>Play</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+      <div class="footer-left">
+        <a href="../../Index.html"><span>SpeedcubingComplete &copy; 2021</span></a>
+      </div>
+      <div class="footer-right">
+        <a href="https://www.instagram.com/speedcubingcomplete/" target='_blank'>
+          <i class="fab fa-instagram"></i>
+        </a>
+
+				<a href="https://twitter.com/SpeedcubingC" target='_blank'>
+          <i class="fab fa-twitter"></i>
+        </a>
+
+				<a href="https://www.facebook.com/speedcubingComplete/" target='_blank'>
+          <i class="fab fa-facebook"></i>
+        </a>
+
+				<a href="https://github.com/Nilesh-Saini-09" target='_blank'>
+          <i class="fab fa-github"></i>
+        </a>
+
+      </div>
+    </div>
+    </div>
+    <!-- Scripts -->
+    <script src="quizJs.js"></script>
+  </body>
+</html>

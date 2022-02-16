@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %> 
 
-<%= console.log(algorithms["3x3x3"][id2]) %>
-<%= console.log([ id2]) %> 
+<!-- <%= console.log(algorithms["3x3x3"][id2]) %>
+<%= console.log([ id2]) %>  -->
 
 <!-- Logic -->
 <% 
@@ -13,16 +13,25 @@
     case 'pll':
         data = algorithms["3x3x3"][id2];
         break;
+    case 'f2l':
+        data = algorithms["3x3x3"][id2];
+        break;
+    case 'coll':
+        data = algorithms["3x3x3"][id2];
+        break;
+    case 'ell':
+        data = algorithms["3x3x3"][id2];
+        break;
  }
  %> 
-
+<%= console.log(data[1]) %>
 
 
 <!-- Display -->
 <section class="p-3 " id='learnPage' data-aos="fade-up" data-aos-delay="100">
     <div class="container mx-auto">
       <div class="row">
-  
+        <h2 class="fw-bolder text-center my-3" ><%= id2.toUpperCase() %> </h2>
         <% for(let i in data) { %>
           
             
