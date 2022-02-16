@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate') %> 
+
+<!-- Data -->
+<% const data = [
+    {name: 'Cube Timer', img: '/imgs/cd-img1.png', link: '/underConst'},
+    {name: 'OLL Trainer', img: '/imgs/cd-img1.png', link: 'https://olltrainer.netlify.app'},
+    {name: 'PLL Trainer', img: '/imgs/cd-img1.png', link: 'https://plltrainer.netlify.app'},
+    {name: 'F2L Trainer', img: '/imgs/cd-img1.png', link: '/underConst'}
+]
+
+
+%> 
+
+<!-- routes for future ref -->
+<!-- {name: '6x6x6 Cube', img: '/imgs/cd-img5.png', link: '/learn/6x6x6'},
+    {name: '7x7x7 Cube', img: '/imgs/cd-img6.png', link: '/learn/7x7x7'},
+    {name: 'Skewb', img: '/imgs/cd-img7.png', link: '/learn/skewb'},
+    {name: 'Pyraminx', img: '/imgs/cd-img8.png', link: '/learn/pyraminx'},
+    {name: 'Square 1', img: '/imgs/cd-img9.png', link: '/learn/square1'},
+    {name: 'FMC', img: '/imgs/cd-img10.png', link: '/learn/fmc'},
+    {name: 'Non-WCA Puzzles', img: '/imgs/cd-img11.png', link: '/learn/nwp'},
+    {name: 'More Resources', img: '/imgs/cd-img12.png', link: '/more-resources'}, -->
+
+<!-- Display -->
+<section class="p-3 " id='learnPage' data-aos="fade-up" data-aos-delay="100">
+  <div class="container">
+    <div class="row">
+
+      <% for(let i of data) { %>
+        
+          
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="col-md">
+                  <div class="card text-center shadow">
+                      <img src=<%= i.img %>   class="card-img-top" alt="image">
+                      <div class="card-body">
+                        <h5 class="card-title text-center"><%= i.name %> </h5>
+                        <a  class="btn btn-dark shadow sm" href=<%= i.link %>>Learn</a>
+                      </div>
+                  </div>
+              </div>
+              </div>
+          
+          
+            
+  
+  <% } %> 
+
+      
+    </div>
+  </div>
+</section>

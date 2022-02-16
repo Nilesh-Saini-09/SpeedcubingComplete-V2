@@ -17,31 +17,30 @@ app.get('/', (req, res) => {
 
 // Timer Home Page (cube, oll, pll, f2l)
 app.get('/timer', (req, res) => {
-    res.render('timer');
-    //res.send('Timer home Page')
+    res.render('timer/timerHome');
 })
 
 app.get('/timer/:id', (req, res) => {
     const  {id} = req.params;
-    switch(id.toLocaleLowerCase()){
+    switch(id.toLowerCase()){
         case 'oll':
-            res.send('oll trainer') 
-            //res.render('ollTrainer')
+            //res.send('oll trainer') 
+            res.redirect('https://olltrainer.netlify.app');
             break;
         case 'pll':
-            res.send('pll trainer') 
-            //res.render('pllTrainer')
+            //res.send('pll trainer') 
+            res.redirect('https://plltrainer.netlify.app');
             break;
         case 'f2l':
-            res.send('f2l trainer') 
+            res.render('underConst');
             //res.render('f2lTrainer')
             break;
         case 'cubetimer':
-            res.send('cube timer') 
+            res.render('underConst'); 
             //res.render('cubeTimer')
             break;
         default: 
-            res.send('cube Timer')
+            res.send('cube Timer');
             //res.render('cubeTimer)
     }
 })
