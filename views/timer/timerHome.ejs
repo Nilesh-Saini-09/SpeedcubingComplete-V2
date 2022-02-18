@@ -2,7 +2,7 @@
 
 <!-- Data -->
 <% const data = [
-    {name: 'Cube Timer', img: '/imgs/cd-img1.png', link: '/underConst'},
+    {name: 'Cube Timer', img: '/imgs/cd-img1.png', link: 'https://sccTimer.netlify.app'},
     {name: 'OLL Trainer', img: '/imgs/cd-img1.png', link: 'https://olltrainer.netlify.app'},
     {name: 'PLL Trainer', img: '/imgs/cd-img1.png', link: 'https://plltrainer.netlify.app'},
     {name: 'F2L Trainer', img: '/imgs/cd-img1.png', link: '/underConst'}
@@ -35,7 +35,7 @@
                       <img src=<%= i.img %>   class="card-img-top" alt="image">
                       <div class="card-body">
                         <h5 class="card-title text-center"><%= i.name %> </h5>
-                        <a  class="btn btn-dark shadow sm" href=<%= i.link %>>Learn</a>
+                        <a  class="btn btn-dark shadow sm" href=<%= i.link %> target='_blank'>Learn</a>
                       </div>
                   </div>
               </div>

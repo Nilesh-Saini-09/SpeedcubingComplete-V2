@@ -36,11 +36,11 @@ app.get('/timer/:id', (req, res) => {
             //res.render('f2lTrainer')
             break;
         case 'cubetimer':
-            res.render('underConst'); 
+            res.redirect('https://sccTimer.netlify.app'); 
             //res.render('cubeTimer')
             break;
         default: 
-            res.send('cube Timer');
+            res.render('timer/timerHome');
             //res.render('cubeTimer)
     }
 })
